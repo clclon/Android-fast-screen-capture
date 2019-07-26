@@ -38,7 +38,7 @@ namespace android {
 
 // ---------------------------------------------------------------------------
 
-class DisplayInfo;
+struct DisplayInfo;
 class Composer;
 class ISurfaceComposerClient;
 class IGraphicBufferProducer;
@@ -69,6 +69,9 @@ public:
     // Get a list of supported configurations for a given display
     static status_t getDisplayConfigs(const sp<IBinder>& display,
             Vector<DisplayInfo>* configs);
+
+    static status_t getDisplayConfigs(const sp<IBinder>& display,
+            std:vector<DisplayInfo>* configs);
 
     // Get the DisplayInfo for the currently-active configuration
     static status_t getDisplayInfo(const sp<IBinder>& display,

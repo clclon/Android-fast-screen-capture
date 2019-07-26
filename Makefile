@@ -1,6 +1,6 @@
 
 PLATFORM := armeabi-v7a
-NDKROOT  := C:\__BuildSource\__LIB__\android-ndk-r20-beta2
+NDKROOT  := C:\__BuildSource\__LIB__\android-ndk-r20b
 PROJECT  := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 BUILDTAG := $(filter-out $@,$(MAKECMDGOALS))
 BUILDOPT := 
@@ -30,7 +30,8 @@ endif
 
 all: allndk
 Debug: allndk adbsetup adbdebug buildscript rundebug
-Release: allndk adbsetup adbexec buildscript
+Release: allndk adbsetup
+# Release: allndk adbsetup adbexec buildscript
 cleanDebug: clean
 cleanRelease: clean
 cleanall: clean
@@ -48,6 +49,7 @@ clean:
 adbsetup:
 	@echo '==== ADB SETUP: [ $(PLATFORM) ] ===='
 ifeq ($(shell expr $(APP_BUILD_VERSION) \< 8), 1)
+	@echo '==== Version $(APP_BUILD_VERSION) needed clean binary header: [ $(PLATFORM)/$(LOCAL_MODULE) ] ===='
 	@Cmd.exe /C android-elf-cleaner.exe $(PROJECT)libs\$(PLATFORM)\$(LOCAL_MODULE)
 endif
 	@Cmd.exe /C adb.exe push $(PROJECT)libs\$(PLATFORM)\$(LOCAL_MODULE) /data/local/tmp/$(LOCAL_MODULE)
@@ -55,8 +57,11 @@ endif
 
 adbexec:
 	@echo '==== ADB RUN: [ $(PLATFORM) ] ===='
+ifeq ($(shell expr $(APP_BUILD_VERSION) \< 7), 1)
 	@Cmd.exe /C adb.exe shell /data/local/tmp/$(LOCAL_MODULE) $(CBP2NDK_CMDLINE)
-	@Cmd.exe /C adb.exe pull /data/local/tmp/OutBmp.bmp C:/__BuildSource/__TEST__/Android/
+else
+	@Cmd.exe /C adb.exe exec-out /data/local/tmp/$(LOCAL_MODULE) $(CBP2NDK_CMDLINE)
+endif
 
 adbdebug:
 	@echo '==== GDB Debug: [ $(PLATFORM) ] ===='
@@ -65,11 +70,15 @@ adbdebug:
 	@Cmd.exe /C adb.exe shell /system/bin/chmod 0777 /data/local/tmp/gdbserver
 
 rundebug:
-	@Cmd.exe /C DebugRemote.cmd
+	@Cmd.exe /C RunRemote.cmd
 
 buildscript:
 ifeq (,$(wildcard ./RunRemote.cmd))
+ifeq ($(shell expr $(APP_BUILD_VERSION) \< 7), 1)
 	@echo "adb.exe shell /data/local/tmp/$(LOCAL_MODULE) $(CBP2NDK_CMDLINE)" >RunRemote.cmd
+else
+	@echo "adb.exe exec-out /data/local/tmp/$(LOCAL_MODULE) $(CBP2NDK_CMDLINE)" >RunRemote.cmd
+endif
 endif
 ifeq (,$(wildcard ./DebugRemote.cmd))
 	@echo "adb.exe forward tcp:59999 tcp:59999" >DebugRemote.cmd

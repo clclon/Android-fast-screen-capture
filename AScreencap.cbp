@@ -5,23 +5,28 @@
 		<Option title="ascreencap" />
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
-		<Option compiler="android_ndk-build" />
 		<Option check_files="0" />
 		<Build>
 			<Target title="Release">
 				<Option output="RunRemote.cmd" prefix_auto="0" extension_auto="0" />
 				<Option type="1" />
-				<Option compiler="android_ndk-build" />
 				<Option parameters="--ratio 2 --rotate 360 -f OutBmp.bmp" />
 				<Environment>
 					<Variable name="ANALIZE" value="1" />
 					<Variable name="ELFCLEANER" value="1" />
 				</Environment>
+				<MakeCommands>
+					<Build command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<CompileFile command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $file SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<Clean command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile clean$target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<DistClean command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile distclean$target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<AskRebuildNeeded command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -q -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<SilentBuild command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot; &amp;gt; $(CMD_NULL)' />
+				</MakeCommands>
 			</Target>
 			<Target title="Debug">
 				<Option output="RunRemote.cmd" prefix_auto="0" extension_auto="0" />
 				<Option type="1" />
-				<Option compiler="android_ndk-build" />
 				<Option parameters="--ratio 2 --rotate 90  -f OutBmp.bmz" />
 				<Compiler>
 					<Add option="-D_DEBUG=1" />
@@ -30,6 +35,14 @@
 					<Variable name="ANALIZE" value="1" />
 					<Variable name="ELFCLEANER" value="1" />
 				</Environment>
+				<MakeCommands>
+					<Build command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<CompileFile command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $file SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<Clean command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile clean$target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<DistClean command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile distclean$target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<AskRebuildNeeded command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -q -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot;' />
+					<SilentBuild command='C:\__BuildSource\__LIB__\android-ndk-r20-beta2/prebuilt/windows/bin/make.exe -f $makefile $target SC_BIN_PATH=&quot;C:\__Bin\CodeBlocks\share\codeblocks/templates/wizard/ndk_android&quot; SC_NDK_API=&quot;android-21&quot; SC_NDK_ABI=&quot;all&quot; SC_NDK_DIR=&quot;C:\__BuildSource\__LIB__\android-ndk-r20-beta2&quot; SC_AOSP_DIR=&quot;C:\__BuildSource\__LIB__\android-aosp-header\android-5.1.1_r1&quot; &amp;gt; $(CMD_NULL)' />
+				</MakeCommands>
 			</Target>
 		</Build>
 		<Compiler>
@@ -83,9 +96,6 @@
 					<options conn_type="0" serial_baud="115200" ip_address="127.0.0.1" ip_port="59999" additional_cmds_before="set solib-search-path obj/local/armeabi-v7a&#x0A;file obj/local/armeabi-v7a/ascreencap&#x0A;" />
 				</remote_debugging>
 			</debugger>
-			<wxsmith version="1">
-				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
-			</wxsmith>
 			<AutoVersioning>
 				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
 				<Settings autoincrement="1" date_declarations="1" use_define="1" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C" svn="1" svn_directory=".svn" header_path="version.h" />

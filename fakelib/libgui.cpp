@@ -1,5 +1,7 @@
 
 #include "libfake.h"
+#include "libfakeVector.h"
+#include "libfakeDisplayInfo.h"
 
 /// typedef void native_handle_t;
 /// typedef uint8_t HandleWrapMethod;
@@ -8,11 +10,9 @@ namespace android {
 
 class IBinder;
 class IGraphicBufferProducer;
-class DisplayInfo;
 
 /// TODO: add
 //class String8;
-//class Vector;
 
 /// declaration -> libinder ?
 class Rect
@@ -66,11 +66,12 @@ public:
     /*
     /// TODO: add
     static sp<IBinder> createDisplay(const String8& displayName, bool secure);
-    static int32_t getDisplayConfigs(const sp<IBinder>& display, Vector<DisplayInfo>* v) { return 0; }
     static int32_t getAnimationFrameStats(FrameStats* outStats) { return 0; }
     int32_t        setTransparentRegionHint(const sp<IBinder>& id, const Region& transparent) { return 0; }
     */
     static sp<IBinder> getBuiltInDisplay(int32_t);
+    static int32_t     getDisplayConfigs(const sp<IBinder>&, Vector<DisplayInfo>*);
+    static int32_t     getDisplayConfigs(const sp<IBinder>&, std::vector<DisplayInfo>*);
     static void        destroyDisplay(const sp<IBinder>&);
     static int32_t     getDisplayInfo(const sp<IBinder>&, DisplayInfo*);
     static int         getActiveConfig(const sp<IBinder>&);
@@ -103,53 +104,61 @@ public:
 };
 
 sp<IBinder> SurfaceComposerClient::getBuiltInDisplay(int id) {
-          LOG("SurfaceComposerClient::getBuiltInDisplay(%d)\n", id);
+          LOGPF();
           sp<IBinder> p;
           p.m_ptr = NULL;
           return p;
     }
+int32_t SurfaceComposerClient::getDisplayConfigs(const sp<IBinder>& display, Vector<DisplayInfo>* configs) {
+          LOGPF();
+          return 0;
+    }
+int32_t SurfaceComposerClient::getDisplayConfigs(const sp<IBinder>& display, std::vector<DisplayInfo>* configs) {
+          LOGPF();
+          return 0;
+    }
 void    SurfaceComposerClient::destroyDisplay(const sp<IBinder>& b) {
-          LOG("SurfaceComposerClient::destroyDisplay()\n");
+          LOGPF();
     }
 int32_t SurfaceComposerClient::getDisplayInfo(const sp<IBinder>& display, DisplayInfo* info) {
-          LOG("SurfaceComposerClient::getDisplayInfo()\n");
+          LOGPF();
           return 0;
     }
 int32_t SurfaceComposerClient::getActiveConfig(const sp<IBinder>& display) {
-          LOG("SurfaceComposerClient::getActiveConfig()\n");
+          LOGPF();
           return 0;
     }
 int32_t SurfaceComposerClient::setActiveConfig(const sp<IBinder>& display, int id) {
-          LOG("SurfaceComposerClient::setActiveConfig()\n");
+          LOGPF();
           return 0;
     }
 void    SurfaceComposerClient::setDisplayPowerMode(const sp<IBinder>& display, int mode) {
-          LOG("SurfaceComposerClient::setDisplayPowerMode()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::openGlobalTransaction() {
-          LOG("SurfaceComposerClient::openGlobalTransaction()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::closeGlobalTransaction(bool synchronous) {
-          LOG("SurfaceComposerClient::closeGlobalTransaction()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::setAnimationTransaction() {
-          LOG("SurfaceComposerClient::setAnimationTransaction()\n");
+          LOGPF();
     }
 int32_t SurfaceComposerClient::clearAnimationFrameStats() {
-          LOG("SurfaceComposerClient::clearAnimationFrameStats()\n");
+          LOGPF();
           return 0;
     }
 void    SurfaceComposerClient::setDisplaySurface(const sp<IBinder>& token, const sp<IGraphicBufferProducer>& bufferProducer) {
-          LOG("SurfaceComposerClient::setDisplaySurface()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::setDisplayLayerStack(const sp<IBinder>& token, uint32_t layerStack) {
-          LOG("SurfaceComposerClient::setDisplayLayerStack()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::setDisplaySize(const sp<IBinder>& token, uint32_t width, uint32_t height) {
-          LOG("SurfaceComposerClient::setDisplaySize()\n");
+          LOGPF();
     }
 void    SurfaceComposerClient::setDisplayProjection(const sp<IBinder>& token, uint32_t orientation, const Rect& layerStackRect, const Rect& displayRect) {
-          LOG("SurfaceComposerClient::setDisplayProjection()\n");
+          LOGPF();
     }
 int32_t    SurfaceComposerClient::hide(const sp<IBinder>& id) { return 0; }
 int32_t    SurfaceComposerClient::show(const sp<IBinder>& id) { return 0; }
@@ -228,60 +237,59 @@ public:
 };
 
     /// < 4.0
-int32_t ScreenshotClient::update () { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::update () { LOGPF(); return 1; }
     /// 4.0 - 8.0 work *
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, bool b) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, bool b) { LOGPF(); return 1; }
     /// 5.0 - 8.0
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, bool b) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, bool b) { LOGPF(); return 1; }
     /// 6.0 - 7.0 (android-6.0.1_r81 / android-7.1.2_r36)
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, uint32_t x, uint32_t y, bool b) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, uint32_t x, uint32_t y, bool b, uint32_t o) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, uint32_t x, uint32_t y, bool b) { LOGPF(); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, uint32_t x, uint32_t y, bool b, uint32_t o) { LOGPF(); return 1; }
     /// 8.0
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
-int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o) { LOG("ScreenshotClient::update(%d)\n", __LINE__); return 1; }
-int32_t ScreenshotClient::capture(const sp<IBinder>& d, const sp<IGraphicBufferProducer>& p, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b) { LOG("ScreenshotClient::capture(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b) { LOGPF(); return 1; }
+int32_t ScreenshotClient::update (const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o) { LOGPF(); return 1; }
+int32_t ScreenshotClient::capture(const sp<IBinder>& d, const sp<IGraphicBufferProducer>& p, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b) { LOGPF(); return 1; }
     /// 9.0
-int32_t ScreenshotClient::capture(const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o, sp<GraphicBuffer> *p) { LOG("ScreenshotClient::capture(%d)\n", __LINE__); return 1; }
-int32_t ScreenshotClient::capture(const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o, bool bb, sp<GraphicBuffer> *p, bool& bbb) { LOG("ScreenshotClient::capture(%d)\n", __LINE__); return 1; }
+int32_t ScreenshotClient::capture(const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o, sp<GraphicBuffer> *p) { LOGPF(); return 1; }
+int32_t ScreenshotClient::capture(const sp<IBinder>& d, Rect r, uint32_t w, uint32_t h, int32_t x, int32_t y, bool b, uint32_t o, bool bb, sp<GraphicBuffer> *p, bool& bbb) { LOGPF(); return 1; }
 
 ScreenshotClient::ScreenshotClient() {
-    LOG("ScreenshotClient::ScreenshotClient()\n");
+    LOGPF();
 }
 ScreenshotClient::~ScreenshotClient() {
-    LOG("ScreenshotClient::~ScreenshotClient()\n");
+    LOGPF();
 }
 void const* ScreenshotClient::getPixels() const {
-    LOG("ScreenshotClient::getPixels()\n");
+    LOGPF();
     return NULL;
 }
 uint32_t ScreenshotClient::getWidth() const {
-    LOG("ScreenshotClient::getWidth()\n");
+    LOGPF();
     return 0;
 }
 uint32_t ScreenshotClient::getHeight() const {
-    LOG("ScreenshotClient::getHeight()\n");
+    LOGPF();
     return 0;
 }
 uint32_t ScreenshotClient::getStride() const {
-    LOG("ScreenshotClient::getHeight()\n");
+    LOGPF();
     return 0;
 }
 int32_t ScreenshotClient::getFormat() const {
-    LOG("ScreenshotClient::getFormat()\n");
+    LOGPF();
     return 0;
 }
 size_t ScreenshotClient::getSize() const {
-    LOG("ScreenshotClient::getSize()\n");
+    LOGPF();
     return 0;
 }
 int32_t ScreenshotClient::getDataSpace() {  /// >= 6.0
-    LOG("ScreenshotClient::getSize()\n");
+    LOGPF();
     return 0;
 }
 void ScreenshotClient::release() {
-    LOG("ScreenshotClient::release()\n");
+    LOGPF();
 }
-
 
 };
 

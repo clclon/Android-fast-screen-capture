@@ -1,11 +1,12 @@
 LOCAL_PATH := $(my-dir)
+
 include $(CLEAR_VARS)
-LOCAL_MODULE := libgui
-LOCAL_INSTALLED_MODULE_STEM := libgui.so
+LOCAL_MODULE := libutils
+LOCAL_INSTALLED_MODULE_STEM := libutils.so
 LOCAL_SDK_VERSION := 22
 LOCAL_CPP_EXTENSION := .cpp
-LOCAL_CPPFLAGS := -std=c++17
-LOCAL_SRC_FILES := libgui.cpp
+LOCAL_CPPFLAGS := -std=c++17 -frtti
+LOCAL_SRC_FILES := libutils.cpp
 LOCAL_LDLIBS := -llog
 # LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_C_INCLUDES := include
@@ -14,11 +15,24 @@ include $(BUILD_SHARED_LIBRARY)
 
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := libgui
+LOCAL_INSTALLED_MODULE_STEM := libgui.so
+LOCAL_SDK_VERSION := 22
+LOCAL_CPP_EXTENSION := .cpp
+LOCAL_CPPFLAGS := -std=c++17 -frtti
+LOCAL_SRC_FILES := libgui.cpp
+LOCAL_LDLIBS := -llog
+LOCAL_LDFLAGS := -L./libs/$(APP_BUILD_VERSION)/$(TARGET_ARCH_ABI)
+LOCAL_C_INCLUDES := include
+LOCAL_MODULE_PATH := $(TARGET_OUT)/libs
+include $(BUILD_SHARED_LIBRARY)
+ 
+include $(CLEAR_VARS)
 LOCAL_MODULE := libui
 LOCAL_INSTALLED_MODULE_STEM := libui.so
 LOCAL_SDK_VERSION := 22
 LOCAL_CPP_EXTENSION := .cpp
-LOCAL_CPPFLAGS := -std=c++17
+LOCAL_CPPFLAGS := -std=c++17 -frtti
 LOCAL_SRC_FILES := libui.cpp
 LOCAL_LDLIBS := -llog
 # LOCAL_SHARED_LIBRARIES := liblog
@@ -26,28 +40,13 @@ LOCAL_C_INCLUDES := include
 LOCAL_MODULE_PATH := $(TARGET_OUT)/libs
 include $(BUILD_SHARED_LIBRARY)
 
-
 include $(CLEAR_VARS)
 LOCAL_MODULE := libbinder
 LOCAL_INSTALLED_MODULE_STEM := libbinder.so
 LOCAL_SDK_VERSION := 22
 LOCAL_CPP_EXTENSION := .cpp
-LOCAL_CPPFLAGS := -std=c++17
+LOCAL_CPPFLAGS := -std=c++17 -frtti
 LOCAL_SRC_FILES := libbinder.cpp
-LOCAL_LDLIBS := -llog
-# LOCAL_SHARED_LIBRARIES := liblog
-LOCAL_C_INCLUDES := include
-LOCAL_MODULE_PATH := $(TARGET_OUT)/libs
-include $(BUILD_SHARED_LIBRARY)
-
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := libutils
-LOCAL_INSTALLED_MODULE_STEM := libutils.so
-LOCAL_SDK_VERSION := 22
-LOCAL_CPP_EXTENSION := .cpp
-LOCAL_CPPFLAGS := -std=c++17
-LOCAL_SRC_FILES := libutils.cpp
 LOCAL_LDLIBS := -llog
 # LOCAL_SHARED_LIBRARIES := liblog
 LOCAL_C_INCLUDES := include
@@ -59,7 +58,7 @@ LOCAL_MODULE := libart
 LOCAL_INSTALLED_MODULE_STEM := libart.so
 LOCAL_SDK_VERSION := 22
 LOCAL_CPP_EXTENSION := .cpp
-LOCAL_CPPFLAGS := -std=c++17
+LOCAL_CPPFLAGS := -std=c++17 -frtti
 LOCAL_SRC_FILES := libart.cpp
 LOCAL_LDLIBS := -llog
 LOCAL_LDFLAGS := -Wl,--version-script,vs-libart.txt

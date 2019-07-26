@@ -45,26 +45,26 @@ private:
     ~GraphicBuffer();
 };
 
-GraphicBuffer::~GraphicBuffer() {}
-GraphicBuffer::GraphicBuffer(uint32_t a1, uint32_t a2, int32_t a3, uint32_t a4, uint64_t a5, std::string a6) { LOG("GraphicBuffer::x()\n"); }
-GraphicBuffer::GraphicBuffer(uint32_t a1, uint32_t a2, int32_t a3, uint32_t a4, uint32_t a5, uint32_t a6, void*, bool a7) { LOG("GraphicBuffer::x()\n"); }
-GraphicBuffer::GraphicBuffer(const void *a1, uint8_t a2, uint32_t a3, uint32_t a4, int32_t a5, uint32_t a6, uint64_t a7, uint32_t a8) { LOG("GraphicBuffer::x()\n"); }
-uint32_t GraphicBuffer::unlock()                      { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint32_t GraphicBuffer::lock(uint32_t a1, void **a2)  { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint32_t GraphicBuffer::lock(uint32_t a1, const Rect& a2, void **a3) { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint32_t GraphicBuffer::getWidth() const           { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint32_t GraphicBuffer::getHeight() const          { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint32_t GraphicBuffer::getStride() const          { LOG("GraphicBuffer::x()\n"); return 0U; }
-uint64_t GraphicBuffer::getUsage() const           { LOG("GraphicBuffer::x()\n"); return 0LLU; }
-int32_t  GraphicBuffer::getPixelFormat() const     { LOG("GraphicBuffer::x()\n"); return 0; }
-uint32_t GraphicBuffer::getLayerCount() const      { LOG("GraphicBuffer::x()\n"); return 0U; }
-Rect     GraphicBuffer::getBounds() const          { LOG("GraphicBuffer::x()\n"); return Rect(0, 0); }
-uint64_t GraphicBuffer::getId() const              { LOG("GraphicBuffer::x()\n"); return 0LLU; }
-int32_t  GraphicBuffer::initCheck() const          { LOG("GraphicBuffer::x()\n"); return 0; }
+GraphicBuffer::~GraphicBuffer() { LOGPF(); }
+GraphicBuffer::GraphicBuffer(uint32_t a1, uint32_t a2, int32_t a3, uint32_t a4, uint64_t a5, std::string a6) { LOGPF(); }
+GraphicBuffer::GraphicBuffer(uint32_t a1, uint32_t a2, int32_t a3, uint32_t a4, uint32_t a5, uint32_t a6, void*, bool a7) { LOGPF(); }
+GraphicBuffer::GraphicBuffer(const void *a1, uint8_t a2, uint32_t a3, uint32_t a4, int32_t a5, uint32_t a6, uint64_t a7, uint32_t a8) { LOGPF(); }
+uint32_t GraphicBuffer::unlock()                      { LOGPF(); return 0U; }
+uint32_t GraphicBuffer::lock(uint32_t a1, void **a2)  { LOGPF(); return 0U; }
+uint32_t GraphicBuffer::lock(uint32_t a1, const Rect& a2, void **a3) { LOGPF(); return 0U; }
+uint32_t GraphicBuffer::getWidth() const           { LOGPF(); return 0U; }
+uint32_t GraphicBuffer::getHeight() const          { LOGPF(); return 0U; }
+uint32_t GraphicBuffer::getStride() const          { LOGPF(); return 0U; }
+uint64_t GraphicBuffer::getUsage() const           { LOGPF(); return 0LLU; }
+int32_t  GraphicBuffer::getPixelFormat() const     { LOGPF(); return 0; }
+uint32_t GraphicBuffer::getLayerCount() const      { LOGPF(); return 0U; }
+Rect     GraphicBuffer::getBounds() const          { LOGPF(); return Rect(0, 0); }
+uint64_t GraphicBuffer::getId() const              { LOGPF(); return 0LLU; }
+int32_t  GraphicBuffer::initCheck() const          { LOGPF(); return 0; }
 
 /// include /platform/frameworks/native/libs/ui/include/ui/PixelFormat.h
-uint32_t bytesPerPixel(int32_t format) { LOG("bytesPerPixel()\n"); return 0U; }
-uint32_t bitsPerPixel(int32_t format)  { LOG("bitsPerPixel()\n"); return 0U; }
+uint32_t bytesPerPixel(int32_t format) { LOGPF(); return 0U; }
+uint32_t bitsPerPixel(int32_t format)  { LOGPF(); return 0U; }
 
 };
 

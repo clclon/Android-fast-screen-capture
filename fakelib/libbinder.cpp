@@ -31,45 +31,45 @@ private:
 };
 
 IPCThreadState::IPCThreadState() {
-    LOG("IPCThreadState::IPCThreadState()\n");
+    LOGPF();
 }
 IPCThreadState::~IPCThreadState() {
-    LOG("IPCThreadState::IPCThreadState()\n");
+    LOGPF();
 }
 IPCThreadState * IPCThreadState::self() {
-    LOG("IPCThreadState::self()\n");
+    LOGPF();
     return new IPCThreadState();
 }
 void IPCThreadState::joinThreadPool(bool b) {
-    LOG("IPCThreadState::joinThreadPool() %d\n", b);
+    LOGPF();
 }
 
 sp<ProcessState> ProcessState::self() {
-    LOG("ProcessState::self()\n");
+    LOGPF();
     sp<ProcessState> p;
     p.m_ptr = NULL;
     return p;
 }
 
 void ProcessState::spawnPooledThread(bool b) {
-    LOG("ProcessState::spawnPooledThread() %d\n", b);
+    LOGPF();
 }
 
 void ProcessState::startThreadPool() {
-    LOG("ProcessState::startThreadPool()\n");
+    LOGPF();
 }
 
 uint32_t ProcessState::setThreadPoolMaxThreadCount(size_t z) {
-    LOG("ProcessState::setThreadPoolMaxThreadCount() %zu\n", z);
+    LOGPF();
     return 0U;
 }
 
 ProcessState::ProcessState() {
-    LOG("ProcessState::ProcessState()\n");
+    LOGPF();
 }
 
 ProcessState::~ProcessState() {
-    LOG("ProcessState::~ProcessState()\n");
+    LOGPF();
 }
     
 }

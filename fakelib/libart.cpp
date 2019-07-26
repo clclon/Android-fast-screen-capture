@@ -9,13 +9,13 @@
 
 extern "C" JNIEXPORT jint JNI_GetDefaultJavaVMInitArgs(void *v)
 {
-	LOG("JNI_GetDefaultJavaVMInitArgs(*)\n");
+	LOGPF();
 	v = nullptr;
 	return 0;
 }
 extern "C" JNIEXPORT jint JNI_CreateJavaVM(JavaVM **jv, JNIEnv **ev, void *v)
 {
-	LOG("JNI_CreateJavaVM(*)\n");
+	LOGPF();
 	jv = nullptr;
 	ev = nullptr;
 	jint *ji = static_cast<jint*>(v);
@@ -24,7 +24,7 @@ extern "C" JNIEXPORT jint JNI_CreateJavaVM(JavaVM **jv, JNIEnv **ev, void *v)
 }
 extern "C" JNIEXPORT jint JNI_GetCreatedJavaVMs(JavaVM **jv, jsize jsz, jsize *pjsz)
 {
-	LOG("JNI_GetCreatedJavaVMs(*)\n");
+	LOGPF();
 	(void) jsz;
 	jv = nullptr;
 	*pjsz = 0;
